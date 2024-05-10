@@ -6,7 +6,7 @@ import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
 
-const SignUp = () => {
+const Register = () => {
     const {createUser, updateUserProfile, logOut} = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [passwordError, setPasswordError] = useState("");
@@ -58,7 +58,7 @@ const SignUp = () => {
   return (
     <div>
       <Helmet>
-        <title>CraftiFY - Sign Up</title>
+        <title>Register</title>
       </Helmet>
       <div className="flex flex-col items-center">
         <form
@@ -150,4 +150,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Register;
