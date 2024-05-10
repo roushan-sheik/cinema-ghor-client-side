@@ -1,151 +1,144 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
-import { toast } from "react-toastify";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import React from "react";
 import { Helmet } from "react-helmet-async";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Btn from "../../components/button/Btn";
+import Inp from "../../components/input/Inp";
+import useUserContext from "../../hooks/useUserContext";
+import auth from "../../services/firebase";
 
 const Register = () => {
-    const {createUser, updateUserProfile, logOut} = useAuth();
-    const [showPassword, setShowPassword] = useState(false);
-    const [passwordError, setPasswordError] = useState("");
-    const navigate = useNavigate();
-
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm();
-
-    const onSubmit = (data) => {
-        const { fullName, email, image, password } = data;
-     
-        setPasswordError("");
-    
-        if (password.length == "") {
-          setPasswordError("Password field is required");
-          return;
-        } else if (password.length < 6) {
-          setPasswordError("Password should be 6 character or longer ");
-          return;
-        } else if (!/[A-Z]/.test(password)) {
-          setPasswordError("add at least one uppercase later");
-          return;
-        } else if (!/[a-z]/.test(password)) {
-          setPasswordError("add at least one lowercase later");
-          return;
-        }
-        
-        // create user
-        createUser(email, password)
+  const location = useLocation();
+  const { updateUserProfile } = useUserContext();
+  // navigate
+  const navigate = useNavigate();
+  const [error, setError] = React.useState(null);
+  const [user, setUser] = React.useState({
+    name: "",
+    email: "",
+    photoUrl: "",
+    password: "",
+  });
+  function handleChange(e) {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  }
+  // handle the form
+  function handleSubmit(e) {
+    e.preventDefault();
+    setError("");
+    // validation
+    // Password should be minimum 8 characters
+    if (user.password.length < 8) {
+      setError("Password should be minimum 8 characters.");
+      toast.error("Password should be minimum 8 characters.", {
+        position: "top-right",
+      });
+      return;
+    }
+    // Must have an Lowercase letter in the password
+    const checkLower = /^(?=.*[a-z]).+$/;
+    if (!checkLower.test(user.password)) {
+      setError("Must have an Lowercase letter in the password");
+      toast.warn("Must have an Lowercase letter in the password", {
+        position: "top-right",
+      });
+      return;
+    }
+    // Must have an Uppercase letter in the password
+    const checkUpper = /^(?=.*[A-Z]).+$/;
+    if (!checkUpper.test(user.password)) {
+      setError("Must have an Uppercase letter in the password");
+      toast.warn("Must have an Uppercase letter in the password", {
+        position: "top-right",
+      });
+      return;
+    }
+    const route = location?.state || "/";
+    createUserWithEmailAndPassword(auth, user.email, user.password)
+      .then((result) => {
+        updateUserProfile(user.name, user.photoUrl)
           .then((result) => {
-            updateUserProfile(fullName, image)
-            .then(() => {
-              toast.success("Registration Successfully")
-              logOut();
-              navigate('/login')
-            })
+            toast.success("Successfully register", {
+              position: "top-center",
+            });
+            setTimeout(() => {
+              navigate(route);
+            }, 4000);
           })
-          .catch((error) => {
-            toast.error("Email is already exist")
-          });
-      };
-    
+          .catch();
+      })
+      .catch((error) => {
+        toast.error(error.message, {
+          position: "top-right",
+        });
+      });
 
-
-
+    setUser({ name: "", email: "", photoUrl: "", password: "" });
+    e.target.reset();
+  }
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <Helmet>
-        <title>Register</title>
+        <title>AffluenceAvenue | register</title>
       </Helmet>
-      <div className="flex flex-col items-center">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="card-body lg:w-[30%] border rounded-md"
-        >
-          <h2 className="text-center text-2xl md:text-3xl font-bold">
-            Sign Up
-          </h2>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Name</span>
-            </label>
-            <input
-              type="text"
-              placeholder="name"
-              className="input input-bordered rounded-md"
-              {...register("fullName", { required: true })}
-            />
-            {errors.fullName && (
-              <span className="text-red-500 text-sm">write your name</span>
-            )}
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
-            <input
-              type="email"
-              placeholder="email"
-              className="input input-bordered rounded-md"
-              {...register("email", { required: true })}
-            />
-            {errors.email && (
-              <span className="text-red-500 text-sm">Email is required</span>
-            )}
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Photo URL</span>
-            </label>
-            <input
-              type="text"
-              placeholder="photo url"
-              className="input input-bordered rounded-md"
-              {...register("image")}
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Password</span>
-            </label>
-            <label className="input input-bordered rounded-md flex items-center gap-2">
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="password"
-                {...register("password")}
-              />
-              <span
-                className="relative lg:-right-20  text-gray-600"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? (
-                  <FaRegEyeSlash></FaRegEyeSlash>
-                ) : (
-                  <FaRegEye></FaRegEye>
-                )}
-              </span>
-            </label>
-
-            {passwordError && (
-              <p className="text-red-500 text-sm">{passwordError}</p>
-            )}
-          </div>
-          <div className="form-control mt-6">
-            <button className="btn bg-[#38B2AC] text-white hover:text-black rounded-md ">
-              Register
-            </button>
-          </div>
-          <h2 className="text-center mt-2 font-medium">
-            Already have an account?{" "}
-            <Link to={"/login"} className="text-[#38B2AC] underline">
-              Login
-            </Link>
-          </h2>
-        </form>
-      </div>
+      <h2 className=" text_pri text-4xl my-4 font-bold text-center">
+        Register
+      </h2>
+      <ToastContainer />
+      <form
+        onSubmit={handleSubmit}
+        className="flex max-w-md flex-col md:w-[50%] w-[94%] gap-4"
+        action="#"
+      >
+        {/* inputs  */}
+        <Inp
+          type="text"
+          name={"name"}
+          required={true}
+          label={"Name"}
+          value={user.name}
+          placeholder={"name"}
+          onChange={handleChange}
+        />
+        <Inp
+          type="text"
+          name={"email"}
+          value={user.email}
+          label={"Email"}
+          required={true}
+          placeholder={"email"}
+          onChange={handleChange}
+        />
+        <Inp
+          type="text"
+          name={"photoUrl"}
+          label={"Photo Url"}
+          value={user.photoUrl}
+          required={true}
+          placeholder={"http://server/arifamoni.jpg"}
+          onChange={handleChange}
+        />
+        <Inp
+          type="password"
+          name={"password"}
+          required={true}
+          value={user.password}
+          label={"Password"}
+          onChange={handleChange}
+        />
+        {/* error message */}
+        <span className="text-red-500">{error}</span>
+        {/* submit button  */}
+        <Btn type={"submit"}> Register</Btn>
+        <p className=" text-base text_sec text-center ">
+          Already have an Account?{" "}
+          <Link to="/login">
+            <span className="text-sky-500">Login</span>
+          </Link>
+        </p>
+      </form>
     </div>
   );
 };
