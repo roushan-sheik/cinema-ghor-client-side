@@ -1,0 +1,123 @@
+.banner1 {
+  background: linear-gradient(
+      180deg,
+      rgba(31, 45, 54, 0.8) 0%,
+      rgba(132, 129, 129, 0) 100%
+    ),
+    url("https://businessgrowmore.com/wp-content/uploads/2024/03/australia_newfalldevs2020_lead-2560x1400-1.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 600px;
+}
+.banner2 {
+  background: linear-gradient(
+      180deg,
+      rgba(31, 45, 54, 0.8) 0%,
+      rgba(132, 129, 129, 0) 100%
+    ),
+    url("https://icarus-luxury-beachfront-villa-gialiskari-icaria.hotelmix.it/data/Photos/OriginalPhoto/13504/1350410/1350410480/Icarus-Luxury-Beachfront-Villa-Gialiskari-Exterior.JPEG");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.banner3 {
+  background: linear-gradient(
+      180deg,
+      rgba(31, 45, 54, 0.8) 0%,
+      rgba(132, 129, 129, 0) 100%
+    ),
+    url("https://images.lifestyleasia.com/wp-content/uploads/sites/6/2022/03/04111335/amandari-indonesia-suite-exterior-and-pool_original_11588-2-1401x900.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.banner4 {
+  background: linear-gradient(
+      180deg,
+      rgba(31, 45, 54, 0.8) 0%,
+      rgba(132, 129, 129, 0) 100%
+    ),
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0CRVi0bdaJtN5SIbxmnC_etkYSknvrgl9C8UoyaMHy4d89tssV44sYf8LROXQH6pg9So&usqp=CAU");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner5 {
+  background: linear-gradient(
+      180deg,
+      rgba(31, 45, 54, 0.8) 0%,
+      rgba(132, 129, 129, 0) 100%
+    ),
+    url("https://robbreport.com/wp-content/uploads/2023/01/Beverly_Ridge8.jpg?w=1000");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner6 {
+  background: linear-gradient(
+      180deg,
+      rgba(31, 45, 54, 0.8) 0%,
+      rgba(132, 129, 129, 0) 100%
+    ),
+    url("https://robbreport.com/wp-content/uploads/2022/02/Indian-Spring-Rear-Exterior-with-Pool.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.banner7 {
+  background: linear-gradient(
+      180deg,
+      rgba(31, 45, 54, 0.8) 0%,
+      rgba(132, 129, 129, 0) 100%
+    ),
+    url("https://robbreport.com/wp-content/uploads/2022/12/1-4.jpg?w=1000");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.banner8 {
+  background: linear-gradient(
+      180deg,
+      rgba(31, 45, 54, 0.8) 0%,
+      rgba(132, 129, 129, 0) 100%
+    ),
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCODweeiyltmMWE5kbk1Xr1ABHk72Y1pLNvdRqyNGkXQ&s");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
