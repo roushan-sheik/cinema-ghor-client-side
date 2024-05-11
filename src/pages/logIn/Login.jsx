@@ -1,9 +1,9 @@
+import { Button } from "@material-tailwind/react";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Btn from "../../components/button/Btn";
 import LogInButton from "../../components/button/LogInButton";
 import Inp from "../../components/input/Inp";
 import useUserContext from "../../hooks/useUserContext";
@@ -83,7 +83,10 @@ const Login = () => {
         {/* error message */}
         <span className="text-red-500">{error}</span>
         {/* submit button  */}
-        <Btn type={"submit"}> Login</Btn>
+
+        <Button type={"submit"} color="blue">
+          LogIn
+        </Button>
         <p className=" text-base text_sec text-center ">
           Do not have an account?
           <Link to="/register">

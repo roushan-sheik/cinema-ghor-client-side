@@ -14,7 +14,7 @@ export const authContext = React.createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
-
+  console.log(user);
   //  create user with email and password
   function createUser(email, password) {
     setLoading(true);
