@@ -2,8 +2,10 @@ import { Button } from "@material-tailwind/react";
 import React from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { MdOutlineClear } from "react-icons/md";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import MobileNav from "../../components/mobileNavList/MobileNav";
 import NavProfile from "../../components/nav-profile/NavProfile";
+import Navlist from "../../components/navList/Navlist";
 import useUserContext from "../../hooks/useUserContext";
 
 function Header() {
@@ -22,48 +24,19 @@ function Header() {
                   {openBar ? <MdOutlineClear /> : <FaBarsStaggered />}
                 </button>
               </span>
-              <div className="md:hidden block ">
-                {openBar && (
-                  <div className="z-50 bg-gray-200 p-4 w-[200px] absolute top-16 flex gap-2 flex-col rounded-sm">
-                    <NavLink
-                      to={"/"}
-                      className={({ isActive, isPending }) =>
-                        isActive
-                          ? "font-semibold text-[#ff6b6b] border-2 border-[#ff6b6b] rounded-lg lg:px-4 px-2 lg:py-3 py-[6px]"
-                          : isPending
-                          ? "pending"
-                          : "flex items-center md:text-lg"
-                      }
-                    >
-                      Home
-                    </NavLink>
-                  </div>
-                )}
-              </div>
+              <div className="md:hidden block ">{openBar && <MobileNav />}</div>
             </div>
             {/* nav title  */}
             <Link to={"/"}>
               <h2 className="font-semibold text_pri cursor-pointer md:text-3xl text-lg">
-                AffluenceAvenue
+                CinemaGhor
               </h2>
             </Link>
           </div>
           {/* center side nav  */}
           <div>
-            <div className="hidden lg:flex gap-8 items-center ">
-              <NavLink
-                to={"/"}
-                className={({ isActive, isPending }) =>
-                  isActive
-                    ? "font-semibold text-[#ff6b6b] border-2 border-[#ff6b6b] rounded-lg lg:px-4 px-2 lg:py-3 py-[6px]"
-                    : isPending
-                    ? "pending"
-                    : "flex items-center md:text-lg"
-                }
-              >
-                Home
-              </NavLink>
-            </div>
+            {/* nav list  */}
+            <Navlist />
           </div>
           {/* right side nav  */}
           <div>

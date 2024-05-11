@@ -8,7 +8,7 @@ const NavProfile = () => {
   const [showDetails, setShowDetails] = React.useState(false);
   function handleLogoutClick() {
     logoutUser()
-      .then((result) => {
+      .then(() => {
         console.log("successfully LogOut");
       })
       .catch((error) => {
@@ -26,7 +26,7 @@ const NavProfile = () => {
         </Badge>
       </div>
       {showDetails && (
-        <div className="bg-gray-200 p-4 rounded-md  absolute to-0 right-0">
+        <div className="bg-gray-200 p-4 md:hidden rounded-md  absolute to-0 right-0">
           <span className="block text-lg  font-semibold">
             {" "}
             {user.displayName || "Empty"}

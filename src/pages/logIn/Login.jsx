@@ -90,7 +90,7 @@ const Login = () => {
         <p className=" text-base text_sec text-center ">
           Do not have an account?
           <Link to="/register">
-            <span className="text-sky-500"> Register</span>
+            <span className="text-sky-500 font-semibold"> Register</span>
           </Link>
         </p>
       </form>
