@@ -1,4 +1,3 @@
-import { Spinner } from "flowbite-react";
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import useUserContext from "../../hooks/useUserContext";
@@ -9,7 +8,7 @@ const PrivateRoute = ({ children }) => {
   if (loading) {
     return (
       <div className="flex justify-center mt-14">
-        <Spinner aria-label="Extra large spinner example" size="xl" />
+        <p>Loading...</p>
       </div>
     );
   }

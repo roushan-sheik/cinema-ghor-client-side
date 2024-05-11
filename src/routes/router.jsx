@@ -9,6 +9,7 @@ import Register from "../pages/register/Register";
 import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 import Wishlist from "../pages/wishlist/Wishlist";
 import Login from "./../pages/logIn/Login";
+import PrivateRoute from "./privet/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,11 +22,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <PrivateRoute>
+            <Profile />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/update-profile",
-        element: <UpdateProfile />,
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
@@ -33,7 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-blog",
-        element: <AddBlog />,
+        element: (
+          <PrivateRoute>
+            <AddBlog />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/all-blogs",
@@ -41,7 +54,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/wishlist",
-        element: <Wishlist />,
+        element: (
+          <PrivateRoute>
+            <Wishlist />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/register",
