@@ -1,21 +1,14 @@
 import axios from "axios";
 //NOTE - loader function
-const loader = async () => {
-  const data = await fetchData("/luxury.json");
-  return { data };
+const homeLoader = async () => {
+  const movies = await fetchData("/movie.json");
+  return { movies };
 };
-export default loader;
-export const specialLoader = async () => {
-  const data = await fetchData("/special.json");
-  return { data };
-};
-export const blogLoader = async () => {
-  const data = await fetchData("/blog.json");
-  return { data };
-};
+export default homeLoader;
 
 //  fetch function
 async function fetchData(url) {
   const data = await axios.get(url);
+  console.log(data);
   return data.data;
 }

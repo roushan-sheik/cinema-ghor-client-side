@@ -9,6 +9,7 @@ import Register from "../pages/register/Register";
 import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 import Wishlist from "../pages/wishlist/Wishlist";
 import Login from "./../pages/logIn/Login";
+import homeLoader from "./loader";
 import PrivateRoute from "./privet/PrivateRoute";
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: homeLoader,
       },
       {
         path: "/profile",

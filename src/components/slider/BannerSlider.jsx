@@ -7,13 +7,12 @@ import "./style.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { bannerData } from "../../../constant/banner";
-
 // import required modules
+import { Button } from "@material-tailwind/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import Btn from "../../button/Btn";
 
-export default function BannerSlider() {
+export default function BannerSlider({ movies }) {
+  console.log(movies);
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
   const onAutoplayTimeLeft = (s, time, progress) => {
@@ -42,14 +41,13 @@ export default function BannerSlider() {
           <div className=" banner1 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0  flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold   text-white text-center">
-                {bannerData[0].title}
+                {movies[0].title}
               </h2>
-              d
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {bannerData[0].description}
+                {movies[0].short_desc}
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Btn>Explore Now</Btn>
+                <Button color="blue">Explore Now</Button>
               </div>
             </div>
           </div>
@@ -58,14 +56,14 @@ export default function BannerSlider() {
           <div className=" banner2 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0  flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold   text-white text-center">
-                {bannerData[1].title}
+                {movies[1].title}
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {bannerData[1].description}
+                {movies[1].short_desc}
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Btn>Explore Now</Btn>
+                <Button color="blue">Explore Now</Button>
               </div>
             </div>
           </div>
@@ -74,14 +72,14 @@ export default function BannerSlider() {
           <div className=" banner3 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0 flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold  text-white text-center">
-                {bannerData[2].title}
+                {movies[2].title}
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {bannerData[2].description}
+                {movies[2].short_desc}
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Btn>Explore Now</Btn>
+                <Button color="blue">Explore Now</Button>
               </div>
             </div>
           </div>
@@ -90,14 +88,14 @@ export default function BannerSlider() {
           <div className=" banner4 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0  flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold  text-white text-center">
-                {bannerData[3].title}
+                {movies[3].title}
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {bannerData[3].description}
+                {movies[3].short_desc}
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Btn>Explore Now</Btn>
+                <Button color="blue">Explore Now</Button>
               </div>
             </div>
           </div>
@@ -106,14 +104,14 @@ export default function BannerSlider() {
           <div className=" banner5 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0 flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold text-white text-center">
-                {bannerData[4].title}
+                {movies[4].title}
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {bannerData[4].description}
+                {movies[4].short_desc}
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Btn>Explore Now</Btn>
+                <Button color="blue">Explore Now</Button>
               </div>
             </div>
           </div>
@@ -122,14 +120,14 @@ export default function BannerSlider() {
           <div className=" banner6 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0 flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold text-white text-center">
-                {bannerData[5].title}
+                {movies[5].title}
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {bannerData[5].description}
+                {movies[5].short_desc}
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Btn>Explore Now</Btn>
+                <Button color="blue">Explore Now</Button>
               </div>
             </div>
           </div>
@@ -138,14 +136,14 @@ export default function BannerSlider() {
           <div className=" banner7 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0 flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold text-white text-center">
-                {bannerData[6].title}
+                {movies[6].title}
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {bannerData[6].description}
+                {movies[6].short_desc}
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Btn>Explore Now</Btn>
+                <Button color="blue">Explore Now</Button>
               </div>
             </div>
           </div>
@@ -154,14 +152,14 @@ export default function BannerSlider() {
           <div className=" banner8 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0 flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold text-white text-center">
-                {bannerData[7].title}
+                {movies[7].title}
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {bannerData[7].description}
+                {movies[7].short_desc}
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Btn>Explore Now</Btn>
+                <Button color="blue">Explore Now</Button>
               </div>
             </div>
           </div>
