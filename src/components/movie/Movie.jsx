@@ -1,6 +1,7 @@
 import { Button, Input } from "@material-tailwind/react";
 import React from "react";
 import { IoIosHeart, IoMdSend } from "react-icons/io";
+import { Link } from "react-router-dom";
 import useUserContext from "../../hooks/useUserContext";
 
 const Movie = ({ movie }) => {
@@ -8,9 +9,9 @@ const Movie = ({ movie }) => {
   const [showComment, setShowComment] = React.useState(false);
   const { title, image, categories, short_desc, description } = movie;
   return (
-    <div className="p-4 rounded-md border flex gap-6 shadow-sm">
+    <div className="p-4 rounded-md border flex gap-6 shadow-sm flex-col lg:flex-row">
       {/* image box  */}
-      <div className="h-[300px] w-[40%] overflow-hidden">
+      <div className="h-[300px] lg:w-[40%] w-full overflow-hidden">
         <img src={image} className="h-full w-full " alt="" />
       </div>
       {/* content box  */}
@@ -28,10 +29,12 @@ const Movie = ({ movie }) => {
         </div>
         {/* comment & wishlist   */}
         <div className="flex gap-6 ">
-          <button className="flex hover:font-medium duration-300 delay-300 ease-in  font-medium  my-2 items-center gap-1 border-2 border-gray-300 rounded-md p-2">
-            View Details
-          </button>
-          <button className=" basis-[30%] flex hover:font-medium duration-300 delay-300 ease-in hover:text-red-600 text-blue-400 my-2 items-center gap-1 border-2 border-gray-300 rounded-sm p-2">
+          <Link to={`/blog-details/${title}`}>
+            <button className="flex lg:basis-[70%] text_sec hover:font-medium duration-300 delay-300 ease-in  font-medium  my-2 items-center gap-1 border-2 border-gray-300 rounded-md p-2">
+              View Details
+            </button>
+          </Link>
+          <button className=" lg:basis-[30%] flex hover:font-medium duration-300 delay-300 ease-in hover:text-red-600 text-blue-400 my-2 items-center gap-1 border-2 border-gray-300 rounded-sm p-2">
             <IoIosHeart className="text-xl" />
             <span className="">Add To Wishlist</span>
           </button>
