@@ -1,8 +1,8 @@
+import { Button } from "@material-tailwind/react";
 import React from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { MdOutlineClear } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
-import Btn from "../../components/button/Btn";
 import NavProfile from "../../components/nav-profile/NavProfile";
 import useUserContext from "../../hooks/useUserContext";
 
@@ -71,8 +71,8 @@ function Header() {
               {user ? (
                 <NavProfile />
               ) : (
-                <Link to={"/login"}>
-                  <Btn>Login</Btn>
+                <Link className="bg_brand" to={"/login"}>
+                  <Button color="blue">Login</Button>
                 </Link>
               )}
             </div>

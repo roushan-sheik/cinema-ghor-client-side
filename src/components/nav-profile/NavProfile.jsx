@@ -27,22 +27,22 @@ const NavProfile = () => {
       </div>
       {showDetails && (
         <div className="bg-gray-200 p-4 rounded-md  absolute to-0 right-0">
-          <span className="block text-bse font-semibold">
+          <span className="block text-lg  font-semibold">
             {" "}
             {user.displayName || "Empty"}
           </span>
-          <span className="block truncate text-sm font-medium text_sec  my-1">
+          <span className="block truncate  font-medium text_sec  my-1">
             {user.email || "Empty"}
           </span>
 
           <Link to={"/profile"}>
-            <p className="text_sec text-sm font-medium">Profile</p>
+            <p className="text_sec   font-medium">Profile</p>
           </Link>
           <Link to={"/update-profile"}>
-            <p className="text_sec text-sm my-1 font-medium">Update Profile</p>
+            <p className="text_sec  my-1 font-medium">Update Profile</p>
           </Link>
           <div onClick={handleLogoutClick}>
-            <Button className="bg-gray-50 my-2 text-black">LogOut</Button>
+            <Button className="bg-gray-50 mt-2 text-black">LogOut</Button>
           </div>
         </div>
       )}
