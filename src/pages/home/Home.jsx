@@ -1,6 +1,7 @@
 import { Spinner } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import Movie from "../../components/movie/Movie";
 import BannerSlider from "../../components/slider/BannerSlider";
 import Title from "../../components/title/Title";
 
@@ -34,6 +35,12 @@ const Home = () => {
           "Uncover the hidden gems of modern cinema in our latest blog post.  Discover the must-watch films that are capturing hearts and minds across the globe. Don't miss out on the excitement of the silver screen!"
         }
       />
+      {/* // recent blogs */}
+      <div className="grid grid-cols-1 gap-6  main_">
+        {movies?.map((movie) => (
+          <Movie key={movie.title} movie={movie} />
+        ))}
+      </div>
     </div>
   );
 };
