@@ -6,6 +6,8 @@ import BannerSlider from "../../components/slider/BannerSlider";
 import Title from "../../components/title/Title";
 
 const Home = () => {
+  // my  server api
+  // https://blog-api-a11.vercel.app/
   const {
     status,
     error,
