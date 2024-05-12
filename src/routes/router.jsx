@@ -58,6 +58,7 @@ const router = createBrowserRouter([
       {
         path: "/blog-details/:title",
         element: <BlogDetails />,
+        loader: homeLoader,
       },
       {
         path: "/wishlist",

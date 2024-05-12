@@ -6,6 +6,7 @@ const homeLoader = async () => {
 };
 export default homeLoader;
 
+
 //  fetch function
 async function fetchData(url) {
   const data = await axios.get(url);

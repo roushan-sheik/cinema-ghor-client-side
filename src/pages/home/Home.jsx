@@ -23,7 +23,11 @@ const Home = () => {
     );
   }
   if (status === "error") {
-    return <span>Error: {error.message}</span>;
+    return (
+      <div className="flex justify-center mt-14 p-6 border-2 rounded-md">
+        <span className="text-red-500">Error: {error.message}</span>;
+      </div>
+    );
   }
 
   return (
