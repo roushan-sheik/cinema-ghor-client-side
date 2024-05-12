@@ -12,7 +12,9 @@ const Movie = ({ movie }) => {
     <div className="p-4 rounded-md border flex gap-6 shadow-sm flex-col lg:flex-row">
       {/* image box  */}
       <div className="h-[300px] lg:w-[40%] w-full overflow-hidden">
-        <img src={image} className="h-full w-full " alt="" />
+        <Link to={`/blog-details/${title}`}>
+          <img src={image} className="h-full w-full " alt="" />
+        </Link>
       </div>
       {/* content box  */}
       <div>
