@@ -46,10 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/add-blog",
         element: (
-          <PrivateRoute>
-            <AddBlog />,
-          </PrivateRoute>
-        ),
+          // <PrivateRoute>
+            <AddBlog />
+          // </PrivateRoute>
+        )
       },
       {
         path: "/all-blogs",
