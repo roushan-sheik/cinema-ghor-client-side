@@ -1,12 +1,14 @@
 import { Button, Option, Select, Textarea } from "@material-tailwind/react";
+import axios from "axios";
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { useLocation } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import Inp from "../../components/input/Inp";
 import useUserContext from "../../hooks/useUserContext";
 
 const AddBlog = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { user } = useUserContext();
   const [error, setError] = React.useState(null);
@@ -21,11 +23,14 @@ const AddBlog = () => {
   function handleChange(e) {
     setBlog({ ...blog, [e.target.name]: e.target.value });
   }
+  const url = "https://blog-api-a11.vercel.app/blogposts";
+  const currentDate = new Date().toLocaleDateString();
+
   // handle the form
   function handleCategoryChange(value) {
     setCategories(value);
   }
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setCategories("");
     setError("");
@@ -34,6 +39,7 @@ const AddBlog = () => {
       setError("Category filed is required");
       return;
     }
+
     const blogObj = {
       user_name: user.displayName,
       user_email: user.email,
@@ -43,8 +49,19 @@ const AddBlog = () => {
       category: categories,
       short_description: blog.short_description,
       long_description: blog.long_description,
+      createdAt: currentDate,
     };
-    console.log(blogObj);
+    try {
+      const res = await axios.post(url, blogObj);
+      toast.success("Successfully blog added", {
+        position: "top-center",
+      });
+      // navigate(route);
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-center",
+      });
+    }
     setBlog({
       title: "",
       image_url: "",
