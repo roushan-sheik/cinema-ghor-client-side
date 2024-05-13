@@ -1,37 +1,21 @@
-import { Spinner } from "@material-tailwind/react";
-import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React from "react";
 import List from "../../components/wishList/List";
 import useUserContext from "../../hooks/useUserContext";
 
 const Wishlist = () => {
+  const [wishlistData, setWishlistData] = React.useState(null);
   const { user } = useUserContext();
-  const {
-    status,
-    error,
-    data: wishlists,
-  } = useQuery({
-    queryKey: ["movies"],
-    queryFn: () =>
-      fetch(`https://blog-api-a11.vercel.app/wishlist/${user.email}`).then(
-        (res) => res.json()
-      ),
-  });
-  console.log(wishlists);
-  if (status === "pending") {
-    return (
-      <div className="flex justify-center mt-14">
-        <Spinner className="h-16 w-16 text-gray-900/50" />
-      </div>
-    );
-  }
-  if (status === "error") {
-    return (
-      <div className="flex justify-center mt-14 p-6 border-2 rounded-md">
-        <span className="text-red-500">Error: {error.message}</span>;
-      </div>
-    );
-  }
+  function wishListDelete(data) {}
+  // Wishlist data fetching
+  const wishlistUrl = `https://blog-api-a11.vercel.app/wishlist/${user.email}`;
+  React.useEffect(() => {
+    async function fetchComments() {
+      const res = await axios.get(wishlistUrl);
+      setWishlistData(res.data);
+    }
+    fetchComments();
+  }, [wishListDelete]);
   return (
     <div>
       <h2 className=" text_pri lg:text-4xl text-2xl lg:my-10 my-7 font-bold text-center">
@@ -39,8 +23,8 @@ const Wishlist = () => {
       </h2>
       <div className="main_  ">
         <div>
-          {wishlists.map((list) => (
-            <List key={list._id} list={list} />
+          {wishlistData?.map((list) => (
+            <List key={list._id} list={list} wishListDelete={wishListDelete} />
           ))}
         </div>
       </div>

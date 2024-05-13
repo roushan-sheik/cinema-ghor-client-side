@@ -1,7 +1,9 @@
+import axios from "axios";
 import React from "react";
 import { MdCancel } from "react-icons/md";
 import { Link } from "react-router-dom";
-const List = ({ list }) => {
+import { toast, ToastContainer } from "react-toastify";
+const List = ({ list, wishListDelete }) => {
   const {
     _id,
     title,
@@ -11,10 +13,25 @@ const List = ({ list }) => {
     short_description,
     long_description,
   } = list;
-  function handleRemoveClick() {}
-  console.log(list);
+  // delete from wishlist
+  const deleteUrl = `https://blog-api-a11.vercel.app/wishlist/delete/${_id}`;
+  async function handleRemoveClick() {
+    wishListDelete("RemoveClicked");
+    try {
+      await axios.delete(deleteUrl);
+      toast.success("Deleted wishlist blog", {
+        position: "top-center",
+      });
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-center",
+      });
+    }
+  }
+
   return (
     <div className="p-4 rounded-md  flex gap-10 border-2  flex-col lg:flex-row">
+      <ToastContainer />
       {/* image box  */}
       <div className="h-[200px] lg:w-[30%] w-full overflow-hidden">
         <Link to={`/blog-details/${blog_id}`}>
