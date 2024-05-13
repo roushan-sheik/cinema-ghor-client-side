@@ -27,12 +27,14 @@ const Movie = ({ movie }) => {
     setCommentText(e.target.value);
   }
   const url = "https://blog-api-a11.vercel.app/comments";
+  const currentDate = new Date().toLocaleDateString();
   const commentObj = {
     blog_id: _id,
     user_name: user.displayName,
     user_email: user.email,
     profile_image: user.photoURL,
     body: commentText,
+    createdAt: currentDate,
   };
   async function handleCommentSubmit() {
     try {

@@ -4,21 +4,24 @@ import React from "react";
 import { toast, ToastContainer } from "react-toastify";
 import useUserContext from "./../../hooks/useUserContext";
 
-const Comment = ({ _id }) => {
+const Comment = ({ _id, commentSubmit }) => {
   const { user } = useUserContext();
   const [commentText, setCommentText] = React.useState("");
   function handleCommentChenage(event) {
     setCommentText(event.target.value);
   }
   const url = "https://blog-api-a11.vercel.app/comments";
+  const currentDate = new Date().toLocaleDateString();
   const commentObj = {
     blog_id: _id,
     user_name: user.displayName,
     user_email: user.email,
     profile_image: user.photoURL,
     body: commentText,
+    createdAt: currentDate,
   };
   async function handleCommentClick() {
+    commentSubmit("submit");
     try {
       await axios.post(url, commentObj);
       toast.success("You have commented", {

@@ -1,5 +1,5 @@
+import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-import Btn from "../../components/button/Btn";
 const ErrorPage = () => {
   return (
     <div className="flex flex-col gap-6 items-center mt-[100px] h-screen">
@@ -10,7 +10,7 @@ const ErrorPage = () => {
           Sorry, an unexpected error has occurred.
         </p>
         <Link to={"/"}>
-          <Btn>Go to Home</Btn>
+          <Button color="blue">Go to Home</Button>
         </Link>
       </div>
     </div>

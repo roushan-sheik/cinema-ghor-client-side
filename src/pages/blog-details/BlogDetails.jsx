@@ -1,13 +1,17 @@
 import { Button } from "@material-tailwind/react";
+import axios from "axios";
 import React from "react";
 import { Link, useLoaderData, useLocation, useParams } from "react-router-dom";
 import BlogUserProfile from "../../components/blogUserProfile/BlogUserProfile";
+import SingleComment from "../../components/comment/SingleComment";
 import Comment from "../../components/commentField/Comment";
 import useUserContext from "../../hooks/useUserContext";
 const BlogDetails = () => {
   const { user } = useUserContext();
   const location = useLocation();
   const { id } = useParams();
+  const [comments, setComments] = React.useState(null);
+  const [commentSub, setCommentSub] = React.useState(null);
   const { movies } = useLoaderData();
   const result = movies.filter((movie) => movie._id === id);
   const {
@@ -35,6 +39,9 @@ const BlogDetails = () => {
     createdAt,
     location_path: location.pathname,
   };
+  function commentSubmit(sub) {
+    setCommentSub(sub);
+  }
   let button;
   let commentBox;
   if (user_email == user.email) {
@@ -50,8 +57,17 @@ const BlogDetails = () => {
     );
   } else {
     button = "";
-    commentBox = <Comment _id={_id} />;
+    commentBox = <Comment commentSubmit={commentSubmit} _id={_id} />;
   }
+  // comment data fetching
+  const url = `https://blog-api-a11.vercel.app/comments/${_id}`;
+  React.useEffect(() => {
+    async function fetchComments() {
+      const res = await axios.get(url);
+      setComments(res.data);
+    }
+    fetchComments();
+  }, [commentSub, commentSubmit]);
 
   return (
     <div className="main_ py-8 ">
@@ -80,7 +96,14 @@ const BlogDetails = () => {
             </span>
           </div>
           {/* comment field text area  */}
-          <div className="mt-8">{commentBox}</div>
+          <div>
+            <div className="mt-8">{commentBox}</div>
+            <div>
+              {comments?.map((comment) => (
+                <SingleComment key={comment._id} comment={comment} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
