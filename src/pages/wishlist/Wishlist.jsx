@@ -1,6 +1,7 @@
 import { Spinner } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import List from "../../components/wishList/List";
 import useUserContext from "../../hooks/useUserContext";
 
 const Wishlist = () => {
@@ -36,7 +37,13 @@ const Wishlist = () => {
       <h2 className=" text_pri lg:text-4xl text-2xl lg:my-10 my-7 font-bold text-center">
         My Wishlist
       </h2>
-      <div></div>
+      <div className="main_  ">
+        <div>
+          {wishlists.map((list) => (
+            <List key={list._id} list={list} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
