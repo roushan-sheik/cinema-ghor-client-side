@@ -10,20 +10,22 @@ import useUserContext from "../../hooks/useUserContext";
 const UpdateBlog = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   const { user } = useUserContext();
   const [error, setError] = React.useState(null);
-  const [categories, setCategories] = React.useState("");
+  const [categories, setCategories] = React.useState(location.state.category);
   const [blog, setBlog] = React.useState({
-    title: "",
-    image_url: "",
-    category: "",
-    short_description: "",
-    long_description: "",
+    title: location.state.title,
+    image_url: location.state.image_url,
+    category: location.state.category,
+    short_description: location.state.short_description,
+    long_description: location.state.long_description,
   });
+
   function handleChange(e) {
     setBlog({ ...blog, [e.target.name]: e.target.value });
   }
-  const url = "https://blog-api-a11.vercel.app/blogposts";
+  const url = `https://blog-api-a11.vercel.app/updateChanges/${location.state._id}`;
   const currentDate = new Date().toLocaleDateString();
 
   // handle the form
@@ -34,7 +36,7 @@ const UpdateBlog = () => {
     e.preventDefault();
     setCategories("");
     setError("");
-    const route = location?.state || "/";
+    // const route = location?.state || "/";
     if (categories === "") {
       setError("Category filed is required");
       return;
@@ -52,11 +54,11 @@ const UpdateBlog = () => {
       createdAt: currentDate,
     };
     try {
-      const res = await axios.post(url, blogObj);
-      toast.success("Successfully blog added", {
+      const res = await axios.put(url, blogObj);
+      toast.success("Updated blog added", {
         position: "top-center",
       });
-      // navigate(route);
+      navigate(location.state.location_path);
     } catch (error) {
       toast.error(error.message, {
         position: "top-center",
@@ -149,7 +151,7 @@ const UpdateBlog = () => {
           {/* submit button  */}
           <Button type={"submit"} color="blue">
             {" "}
-            Add Blog
+            Update Blog
           </Button>
         </form>
       </div>

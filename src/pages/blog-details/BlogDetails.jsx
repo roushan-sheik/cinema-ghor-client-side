@@ -1,11 +1,12 @@
 import { Button } from "@material-tailwind/react";
 import React from "react";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useParams } from "react-router-dom";
 import BlogUserProfile from "../../components/blogUserProfile/BlogUserProfile";
 import Comment from "../../components/commentField/Comment";
 import useUserContext from "../../hooks/useUserContext";
 const BlogDetails = () => {
   const { user } = useUserContext();
+  const location = useLocation();
   const { title: querySearchParam } = useParams();
   const { movies } = useLoaderData();
   const result = movies.filter((movie) => movie.title === querySearchParam);
@@ -21,10 +22,23 @@ const BlogDetails = () => {
     profile_image,
     createdAt,
   } = result[0] || {};
+  let newObj = {
+    _id,
+    title,
+    image_url,
+    category,
+    short_description,
+    long_description,
+    user_name,
+    user_email,
+    profile_image,
+    createdAt,
+    location_path: location.pathname,
+  };
   let button;
   if (user_email == user.email) {
     button = (
-      <Link to={"/update-blog"}>
+      <Link to={"/update-blog"} state={newObj}>
         <Button color="blue">Update Blog</Button>
       </Link>
     );
