@@ -76,6 +76,33 @@ const Movie = ({ movie }) => {
       </div>
     );
   }
+  // Wishlist features
+  const WishlistUrl = "https://blog-api-a11.vercel.app/wishlist";
+  const wishListObj = {
+    blog_id: _id,
+    user_name: user.displayName,
+    user_email: user.email,
+    profile_image: user.photoURL,
+    createdAt: currentDate,
+  };
+  async function handleWishlistClick() {
+    try {
+      await axios.post(WishlistUrl, wishListObj);
+      toast.success("Added to Wishlist", {
+        position: "top-center",
+      });
+    } catch (error) {
+      if (error.response.status == 422) {
+        toast.error("Already Exist", {
+          position: "top-center",
+        });
+      } else {
+        toast.error(error.message, {
+          position: "top-center",
+        });
+      }
+    }
+  }
   return (
     <div className="border shadow-sm">
       <ToastContainer />
@@ -110,7 +137,10 @@ const Movie = ({ movie }) => {
                 View Details
               </button>
             </Link>
-            <button className=" lg:basis-[30%] flex hover:font-medium duration-300 delay-300 ease-in hover:text-red-600 text-blue-400 my-2 items-center gap-1 border-2 border-gray-300 rounded-sm p-2">
+            <button
+              onClick={handleWishlistClick}
+              className=" lg:basis-[30%] flex hover:font-medium duration-300 delay-300 ease-in hover:text-red-600 text-blue-400 my-2 items-center gap-1 border-2 border-gray-300 rounded-sm p-2"
+            >
               <IoIosHeart className="text-xl" />
               <span className="">Add To Wishlist</span>
             </button>
