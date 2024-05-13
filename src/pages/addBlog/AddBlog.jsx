@@ -84,7 +84,7 @@ const AddBlog = () => {
         <ToastContainer />
         <form
           onSubmit={handleSubmit}
-          className="flex max-w-md flex-col lg:w-[70%] w-[94%] gap-4"
+          className="flex max-w-md flex-col w-[80%] gap-4"
           action="#"
         >
           {/* inputs  */}
@@ -92,7 +92,7 @@ const AddBlog = () => {
             type="text"
             name={"title"}
             required={true}
-            label={"Name"}
+            label={"Blog Title"}
             value={blog.title}
             placeholder={"title"}
             onChange={handleChange}
@@ -136,9 +136,13 @@ const AddBlog = () => {
               Select an option
             </Option>
             <Option value="Action">Action</Option>
-            <Option value="Science">Science</Option>
-            <Option value="Robotic">Robotic</Option>
-            <Option value="Adventure">Adventure</Option>
+            <Option value="Science">Science Fiction</Option>
+            <Option value="Robotic">Comedy</Option>
+            <Option value="Robotic">Adventure</Option>
+            <Option value="Adventure">Drama</Option>
+            <Option value="Adventure">Fantasy</Option>
+            <Option value="Adventure">Horror</Option>
+            <Option value="Adventure">Romance</Option>
           </Select>
           {/* error message */}
           <span className="text-red-500">{error}</span>
