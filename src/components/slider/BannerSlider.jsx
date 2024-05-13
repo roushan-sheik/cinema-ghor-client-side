@@ -11,8 +11,7 @@ import "swiper/css/pagination";
 import { Button } from "@material-tailwind/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
-export default function BannerSlider({ movies }) {
-  console.log(movies);
+export default function BannerSlider() {
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
   const onAutoplayTimeLeft = (s, time, progress) => {
@@ -41,10 +40,11 @@ export default function BannerSlider({ movies }) {
           <div className=" banner1 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0  flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold   text-white text-center">
-                {movies[0].title}
+                The Art of Cinematography: Exploring Visual Storytelling
               </h2>
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {movies[0].short_desc}
+                Delve into the captivating world of cinematography and its role
+                in shaping cinematic narratives.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
                 <Button color="blue">Explore Now</Button>
@@ -56,11 +56,12 @@ export default function BannerSlider({ movies }) {
           <div className=" banner2 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0  flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold   text-white text-center">
-                {movies[1].title}
+                {"The Art of Cinematography: Exploring Visual Storytelling"}
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {movies[1].short_desc}
+                Revisit the timeless classic Casablanca and discover why it
+                remains a beloved masterpiece.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
                 <Button color="blue">Explore Now</Button>
@@ -72,11 +73,12 @@ export default function BannerSlider({ movies }) {
           <div className=" banner3 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0 flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold  text-white text-center">
-                {movies[2].title}
+                Behind the Scenes: The Making of a Blockbuster
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {movies[2].short_desc}
+                Go behind the scenes of a blockbuster film and discover the
+                magic of filmmaking.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
                 <Button color="blue">Explore Now</Button>
@@ -88,11 +90,12 @@ export default function BannerSlider({ movies }) {
           <div className=" banner4 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0  flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold  text-white text-center">
-                {movies[3].title}
+                Exploring Genre: The Evolution of Science Fiction Cinema
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {movies[3].short_desc}
+                Journey through the evolution of science fiction cinema and its
+                impact on popular culture.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
                 <Button color="blue">Explore Now</Button>
@@ -104,11 +107,12 @@ export default function BannerSlider({ movies }) {
           <div className=" banner5 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0 flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold text-white text-center">
-                {movies[4].title}
+                Iconic Movie Soundtracks: A Symphony of Emotion
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {movies[4].short_desc}
+                Celebrate the power of iconic movie soundtracks and their
+                ability to evoke emotion.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
                 <Button color="blue">Explore Now</Button>
@@ -120,11 +124,12 @@ export default function BannerSlider({ movies }) {
           <div className=" banner6 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0 flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold text-white text-center">
-                {movies[5].title}
+                Exploring Diversity in Cinema: Representation Matters
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {movies[5].short_desc}
+                Explore the importance of diversity and representation in
+                shaping cinematic narratives.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
                 <Button color="blue">Explore Now</Button>
@@ -136,11 +141,12 @@ export default function BannerSlider({ movies }) {
           <div className=" banner7 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0 flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold text-white text-center">
-                {movies[6].title}
+                The Rise of Streaming Services: Reshaping the Movie Industry
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {movies[6].short_desc}
+                Examine the impact of streaming services on the traditional
+                movie industry.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
                 <Button color="blue">Explore Now</Button>
@@ -152,11 +158,12 @@ export default function BannerSlider({ movies }) {
           <div className=" banner8 banner_common z-0  relative h-[600px]  ">
             <div className="absolute top-0 p-10 left-0 flex justify-center items-center flex-col h-full">
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold text-white text-center">
-                {movies[7].title}
+                "The Art of Adaptation: From Page to Screen
               </h2>
 
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
-                {movies[7].short_desc}
+                Discover the challenges and triumphs of adapting literature for
+                the silver screen.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
                 <Button color="blue">Explore Now</Button>

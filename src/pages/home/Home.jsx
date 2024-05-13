@@ -14,7 +14,10 @@ const Home = () => {
     data: movies,
   } = useQuery({
     queryKey: ["movies"],
-    queryFn: () => fetch("/movie.json").then((res) => res.json()),
+    queryFn: () =>
+      fetch("https://blog-api-a11.vercel.app/blogposts").then((res) =>
+        res.json()
+      ),
   });
 
   if (status === "pending") {
