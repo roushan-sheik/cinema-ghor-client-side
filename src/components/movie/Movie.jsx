@@ -9,6 +9,7 @@ const Movie = ({ movie }) => {
   const { user } = useUserContext();
   const [showComment, setShowComment] = React.useState(false);
   const {
+    _id,
     title,
     image_url,
     category,
@@ -32,7 +33,7 @@ const Movie = ({ movie }) => {
       <div className="p-4 rounded-md  flex gap-6  flex-col lg:flex-row">
         {/* image box  */}
         <div className="h-[300px] lg:w-[40%] w-full overflow-hidden">
-          <Link to={`/blog-details/${title}`}>
+          <Link to={`/blog-details/${_id}`}>
             <img src={image_url} className="h-full w-full " alt="" />
           </Link>
         </div>
@@ -48,7 +49,7 @@ const Movie = ({ movie }) => {
           </div>
           {/* comment & wishlist   */}
           <div className="flex gap-6 ">
-            <Link to={`/blog-details/${title}`}>
+            <Link to={`/blog-details/${_id}`}>
               <button className="flex lg:basis-[70%] text_sec hover:font-medium duration-300 delay-300 ease-in  font-medium  my-2 items-center gap-1 border-2 border-gray-300 rounded-md p-2">
                 View Details
               </button>

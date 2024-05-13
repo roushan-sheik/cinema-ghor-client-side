@@ -7,9 +7,9 @@ import useUserContext from "../../hooks/useUserContext";
 const BlogDetails = () => {
   const { user } = useUserContext();
   const location = useLocation();
-  const { title: querySearchParam } = useParams();
+  const { id } = useParams();
   const { movies } = useLoaderData();
-  const result = movies.filter((movie) => movie.title === querySearchParam);
+  const result = movies.filter((movie) => movie._id === id);
   const {
     _id,
     title,

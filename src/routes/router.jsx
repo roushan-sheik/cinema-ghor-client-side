@@ -8,12 +8,12 @@ import FeaturedBlogs from "../pages/featuredBlog/FeaturedBlogs";
 import Home from "../pages/home/Home";
 import Profile from "../pages/profile/Profile";
 import Register from "../pages/register/Register";
+import UpdateBlog from "../pages/updateBlog/UpdateBlog";
 import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 import Wishlist from "../pages/wishlist/Wishlist";
 import Login from "./../pages/logIn/Login";
 import homeLoader, { allBlogsLoader } from "./loader";
 import PrivateRoute from "./privet/PrivateRoute";
-import UpdateBlog from "../pages/updateBlog/UpdateBlog";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         element: <UpdateBlog />,
       },
       {
-        path: "/blog-details/:title",
+        path: "/blog-details/:id",
         element: <BlogDetails />,
         loader: homeLoader,
       },
