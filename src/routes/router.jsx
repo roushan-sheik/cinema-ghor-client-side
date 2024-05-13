@@ -13,6 +13,7 @@ import Wishlist from "../pages/wishlist/Wishlist";
 import Login from "./../pages/logIn/Login";
 import homeLoader, { allBlogsLoader } from "./loader";
 import PrivateRoute from "./privet/PrivateRoute";
+import UpdateBlog from "../pages/updateBlog/UpdateBlog";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -60,7 +61,11 @@ const router = createBrowserRouter([
       {
         path: "/featured-blogs",
         element: <FeaturedBlogs />,
-        loader: allBlogsLoader,
+        // loader: allBlogsLoader,
+      },
+      {
+        path: "/update-blog",
+        element: <UpdateBlog />,
       },
       {
         path: "/blog-details/:title",

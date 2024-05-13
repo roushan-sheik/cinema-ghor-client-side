@@ -1,4 +1,5 @@
 import React from "react";
+import useUserContext from "../../hooks/useUserContext";
 
 const BlogUserProfile = ({
   createdAt,
@@ -6,6 +7,7 @@ const BlogUserProfile = ({
   user_name,
   profile_image,
 }) => {
+  const { user } = useUserContext();
   // Convert the date string to a Date object
   const createdAtData = new Date(createdAt);
   // Calculate the difference in milliseconds between the current date and createdAt date
@@ -14,7 +16,7 @@ const BlogUserProfile = ({
   const daysAgo = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
 
   return (
-    <div>
+    <div className="flex ">
       {/* user profile  */}
       <div className=" px-4 pt-4 flex  items-center gap-3 ">
         {/* profile image box  */}
