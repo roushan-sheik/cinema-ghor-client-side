@@ -136,13 +136,13 @@ const AddBlog = () => {
               Select an option
             </Option>
             <Option value="Action">Action</Option>
-            <Option value="Science">Science Fiction</Option>
-            <Option value="Robotic">Comedy</Option>
-            <Option value="Robotic">Adventure</Option>
-            <Option value="Adventure">Drama</Option>
-            <Option value="Adventure">Fantasy</Option>
-            <Option value="Adventure">Horror</Option>
-            <Option value="Adventure">Romance</Option>
+            <Option value="Science Fiction">Science Fiction</Option>
+            <Option value="Comedy">Comedy</Option>
+            <Option value="Adventure">Adventure</Option>
+            <Option value="Drama">Drama</Option>
+            <Option value="Fantasy">Fantasy</Option>
+            <Option value="Horror">Horror</Option>
+            <Option value="Romance">Romance</Option>
           </Select>
           {/* error message */}
           <span className="text-red-500">{error}</span>
