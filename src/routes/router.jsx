@@ -10,7 +10,7 @@ import Register from "../pages/register/Register";
 import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 import Wishlist from "../pages/wishlist/Wishlist";
 import Login from "./../pages/logIn/Login";
-import homeLoader from "./loader";
+import homeLoader, { allBlogsLoader } from "./loader";
 import PrivateRoute from "./privet/PrivateRoute";
 const router = createBrowserRouter([
   {
@@ -47,13 +47,14 @@ const router = createBrowserRouter([
         path: "/add-blog",
         element: (
           // <PrivateRoute>
-            <AddBlog />
+          <AddBlog />
           // </PrivateRoute>
-        )
+        ),
       },
       {
         path: "/all-blogs",
         element: <AllBlogs />,
+        loader: allBlogsLoader,
       },
       {
         path: "/blog-details/:title",

@@ -78,7 +78,7 @@ const AddBlog = () => {
         <Helmet>
           <title>MovieGhor | Add Blog</title>
         </Helmet>
-        <h2 className=" text_pri text-4xl my-4 font-bold text-center">
+        <h2 className=" text_pri text-4xl my-10 font-bold text-center">
           Add Blog
         </h2>
         <ToastContainer />

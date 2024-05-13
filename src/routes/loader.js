@@ -6,6 +6,12 @@ const homeLoader = async () => {
 };
 export default homeLoader;
 
+export const allBlogsLoader = async () => {
+  const movies = await fetchData("https://blog-api-a11.vercel.app/blogposts");
+  return { movies };
+};
+ 
+
 //  fetch function
 async function fetchData(url) {
   const data = await axios.get(url);
