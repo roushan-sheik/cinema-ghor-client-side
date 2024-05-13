@@ -7,6 +7,7 @@ const BlogDetails = () => {
   const { movies } = useLoaderData();
   const result = movies.filter((movie) => movie.title === querySearchParam);
   const {
+    _id,
     title,
     image_url,
     category,
@@ -19,16 +20,16 @@ const BlogDetails = () => {
   } = result[0] || {};
 
   return (
-    <div className="main_ py-8">
+    <div className="main_ py-8 ">
       <BlogUserProfile
         createdAt={createdAt}
         profile_image={profile_image}
         user_email={user_email}
         user_name={user_name}
       />
-      <div className="flex ">
+      <div className="flex flex-col lg:flex-row ">
         {/* image box  */}
-        <div className="h-[600px] basis-[40%] p-4">
+        <div className="lg:h-[600px] h-[250px] basis-[40%] p-4">
           <img src={image_url} className="w-full h-full " alt="Image" />
         </div>
         {/* content box  */}
@@ -42,7 +43,7 @@ const BlogDetails = () => {
           ></div>
           {/* comment field text area  */}
           <div className="mt-8">
-            <Comment />
+            <Comment _id={_id} />
           </div>
         </div>
       </div>

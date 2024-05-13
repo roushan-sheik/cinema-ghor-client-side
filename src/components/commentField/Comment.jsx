@@ -1,10 +1,39 @@
 import { IconButton, Textarea } from "@material-tailwind/react";
+import axios from "axios";
 import React from "react";
+import { toast, ToastContainer } from "react-toastify";
+import useUserContext from "./../../hooks/useUserContext";
 
-const Comment = () => {
+const Comment = ({ _id }) => {
+  const { user } = useUserContext();
+  const [commentText, setCommentText] = React.useState("");
+  function handleCommentChenage(event) {
+    setCommentText(event.target.value);
+  }
+  const url = "https://blog-api-a11.vercel.app/comments";
+  const commentObj = {
+    blog_id: _id,
+    user_name: user.displayName,
+    user_email: user.email,
+    profile_image: user.photoURL,
+    body: commentText,
+  };
+  async function handleCommentClick() {
+    try {
+      await axios.post(url, commentObj);
+      toast.success("You have commented", {
+        position: "top-center",
+      });
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-center",
+      });
+    }
+    setCommentText("");
+  }
   return (
     <div>
-      {" "}
+      <ToastContainer />{" "}
       <div className="flex w-full flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
         <div className="flex">
           <IconButton variant="text" className="rounded-full">
@@ -42,7 +71,9 @@ const Comment = () => {
         </div>
         <Textarea
           rows={1}
+          onChange={handleCommentChenage}
           resize={true}
+          value={commentText}
           placeholder="Your Comment"
           className="min-h-full !border-0 focus:border-transparent"
           containerProps={{
@@ -52,7 +83,7 @@ const Comment = () => {
             className: "before:content-none after:content-none",
           }}
         />
-        <div>
+        <div onClick={handleCommentClick}>
           <IconButton variant="text" className="rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"

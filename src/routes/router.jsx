@@ -4,6 +4,7 @@ import AddBlog from "../pages/addBlog/AddBlog";
 import AllBlogs from "../pages/allBlogs/AllBlogs";
 import BlogDetails from "../pages/blog-details/BlogDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import FeaturedBlogs from "../pages/featuredBlog/FeaturedBlogs";
 import Home from "../pages/home/Home";
 import Profile from "../pages/profile/Profile";
 import Register from "../pages/register/Register";
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
       {
         path: "/all-blogs",
         element: <AllBlogs />,
+        loader: allBlogsLoader,
+      },
+      {
+        path: "/featured-blogs",
+        element: <FeaturedBlogs />,
         loader: allBlogsLoader,
       },
       {
