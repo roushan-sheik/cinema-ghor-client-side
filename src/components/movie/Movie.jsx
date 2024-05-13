@@ -1,12 +1,15 @@
 import { Button, Input } from "@material-tailwind/react";
+import axios from "axios";
 import React from "react";
 import { IoIosHeart, IoMdSend } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import useUserContext from "../../hooks/useUserContext";
 import BlogUserProfile from "../blogUserProfile/BlogUserProfile";
 
 const Movie = ({ movie }) => {
   const { user } = useUserContext();
+  const [commentText, setCommentText] = React.useState("");
   const [showComment, setShowComment] = React.useState(false);
   const {
     _id,
@@ -20,9 +23,60 @@ const Movie = ({ movie }) => {
     profile_image,
     createdAt,
   } = movie;
-
+  function handleCommentChange(e) {
+    setCommentText(e.target.value);
+  }
+  const url = "https://blog-api-a11.vercel.app/comments";
+  const commentObj = {
+    blog_id: _id,
+    user_name: user.displayName,
+    user_email: user.email,
+    profile_image: user.photoURL,
+    body: commentText,
+  };
+  async function handleCommentSubmit() {
+    try {
+      await axios.post(url, commentObj);
+      toast.success("You have commented", {
+        position: "top-center",
+      });
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-center",
+      });
+    }
+    setCommentText("");
+  }
+  let commentBox;
+  if (user_email == user.email) {
+    commentBox = (
+      <p className="p-2 border-2 bg-gray-200 mt-6 text-red-500">
+        {"Can not comment on own blog"}
+      </p>
+    );
+  } else {
+    commentBox = (
+      <div className="relative flex w-full max-w-[24rem]">
+        <Input
+          onChange={handleCommentChange}
+          variant="static"
+          placeholder="comment..."
+        />
+        <Button
+          onClick={handleCommentSubmit}
+          size="sm"
+          color={"blue"}
+          // disabled={!user}
+          className="!absolute right-1 top-1 rounded"
+        >
+          <IoMdSend className="text-lg" />
+        </Button>
+      </div>
+    );
+  }
   return (
     <div className="border shadow-sm">
+      <ToastContainer />
       <BlogUserProfile
         createdAt={createdAt}
         profile_image={profile_image}
@@ -60,17 +114,7 @@ const Movie = ({ movie }) => {
             </button>
           </div>
           {/* comment input  box  */}
-          <div className="relative flex w-full max-w-[24rem]">
-            <Input variant="static" placeholder="comment..." />
-            <Button
-              size="sm"
-              color={"blue"}
-              // disabled={!user}
-              className="!absolute right-1 top-1 rounded"
-            >
-              <IoMdSend className="text-lg" />
-            </Button>
-          </div>
+          <div>{commentBox}</div>
         </div>
       </div>
     </div>

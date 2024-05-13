@@ -36,15 +36,23 @@ const BlogDetails = () => {
     location_path: location.pathname,
   };
   let button;
+  let commentBox;
   if (user_email == user.email) {
     button = (
       <Link to={"/update-blog"} state={newObj}>
         <Button color="blue">Update Blog</Button>
       </Link>
     );
+    commentBox = (
+      <p className="p-2 border-2 bg-gray-200 text-red-500">
+        {"Can not comment on own blog"}
+      </p>
+    );
   } else {
     button = "";
+    commentBox = <Comment _id={_id} />;
   }
+
   return (
     <div className="main_ py-8 ">
       <div className="flex items-center gap-6">
@@ -72,9 +80,7 @@ const BlogDetails = () => {
             </span>
           </div>
           {/* comment field text area  */}
-          <div className="mt-8">
-            <Comment _id={_id} />
-          </div>
+          <div className="mt-8">{commentBox}</div>
         </div>
       </div>
     </div>
