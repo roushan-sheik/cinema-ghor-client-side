@@ -84,6 +84,11 @@ const Movie = ({ movie }) => {
     user_email: user.email,
     profile_image: user.photoURL,
     createdAt: currentDate,
+    title,
+    image_url,
+    category,
+    short_description,
+    long_description,
   };
   async function handleWishlistClick() {
     try {
