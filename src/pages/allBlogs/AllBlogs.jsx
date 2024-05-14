@@ -1,24 +1,27 @@
 import { Option, Select, Spinner } from "@material-tailwind/react";
-import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React from "react";
 import Movie from "../../components/movie/Movie";
 
 const AllBlogs = () => {
   const [categories, setCategories] = React.useState("");
   const [searchInput, setSearchInput] = React.useState("");
- 
-  const {
-    status,
-    error,
-    data: movies,
-  } = useQuery({
-    queryKey: ["movies"],
-    queryFn: () =>
-      fetch("https://blog-api-a11.vercel.app/blogposts").then((res) =>
-        res.json()
-      ),
-  });
+  const [movies, setMovies] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
 
+  const blogsUrl = "https://blog-api-a11.vercel.app/blogposts";
+
+  React.useEffect(() => {
+    async function fetchComments() {
+      setLoading(true);
+      const res = await axios.get(blogsUrl);
+      setMovies(res.data);
+    }
+    fetchComments();
+    setLoading(false);
+  }, []);
+
+  // handler
   function handleSearchChange(event) {
     setSearchInput(event.target.value);
   }
@@ -33,17 +36,10 @@ const AllBlogs = () => {
     console.log("select search selected", categories);
   }
 
-  if (status === "pending") {
+  if (loading) {
     return (
       <div className="flex justify-center mt-14">
         <Spinner className="h-16 w-16 text-gray-900/50" />
-      </div>
-    );
-  }
-  if (status === "error") {
-    return (
-      <div className="flex justify-center mt-14 p-6 border-2 rounded-md">
-        <span className="text-red-500">Error: {error.message}</span>;
       </div>
     );
   }

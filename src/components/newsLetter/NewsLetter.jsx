@@ -1,4 +1,5 @@
 import { Button } from "@material-tailwind/react";
+import { motion } from "framer-motion";
 import React from "react";
 import { toast, ToastContainer } from "react-toastify";
 import Inp from "../input/Inp";
@@ -12,12 +13,18 @@ const NewsLetter = () => {
   }
   return (
     <div>
-      <Title
-        title={"Subscribe To Our NewsLetter "}
-        description={
-          "Welcome to CinemaGhor, your ultimate destination for all things cinema! Subscribe to our newsletter and embark on a journey through the captivating world of movies. From exclusive behind-the-scenes insights to in-depth film analysis."
-        }
-      />
+      <motion.div
+        initial={{ x: -1000 }}
+        animate={{ x: 0 }}
+        transition={{ duration: "2", delay: "3" }}
+      >
+        <Title
+          title={"Subscribe To Our NewsLetter "}
+          description={
+            "Welcome to CinemaGhor, your ultimate destination for all things cinema! Subscribe to our newsletter and embark on a journey through the captivating world of movies. From exclusive behind-the-scenes insights to in-depth film analysis."
+          }
+        />
+      </motion.div>
       <ToastContainer />
       <div className="flex flex-col items-center lg:flex-row gap-4 py-14 border-2 bg-blue-300">
         {/* image box  */}
@@ -30,7 +37,12 @@ const NewsLetter = () => {
         </div>
 
         {/* content box  */}
-        <div className="flex-1 p-4">
+        <motion.div
+          initial={{ x: -1000 }}
+          animate={{ x: 0 }}
+          transition={{ duration: "2", delay: "3.5" }}
+          className="flex-1 p-4"
+        >
           <div className="lg:w-1/2 ">
             <h2 className="text-3xl text-center font-bold my-2 text-white">
               Subscribe Now
@@ -54,7 +66,7 @@ const NewsLetter = () => {
               Subscribe Now{" "}
             </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

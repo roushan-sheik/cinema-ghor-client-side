@@ -1,5 +1,6 @@
 import { Spinner } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import React from "react";
 import CinemaHall from "../../cinemaHall/CinemaHall";
 import DirectorSpotlight from "../../components/directorSpogthLight/DirectorSpotlight";
@@ -7,7 +8,6 @@ import Movie from "../../components/movie/Movie";
 import NewsLetter from "../../components/newsLetter/NewsLetter";
 import BannerSlider from "../../components/slider/BannerSlider";
 import Title from "../../components/title/Title";
-
 const Home = () => {
   // my  server api
   // https://blog-api-a11.vercel.app/
@@ -41,18 +41,29 @@ const Home = () => {
   return (
     <div className="z-0">
       <BannerSlider movies={movies} />
-      <Title
-        title={"Recent Blog Post"}
-        description={
-          "Uncover the hidden gems of modern cinema in our latest blog post.  Discover the must-watch films that are capturing hearts and minds across the globe. Don't miss out on the excitement of the silver screen!"
-        }
-      />
+      <motion.div
+        initial={{ x: -1000 }}
+        animate={{ x: 0 }}
+        transition={{ duration: "1", delay: ".5" }}
+      >
+        <Title
+          title={"Recent Blog Post"}
+          description={
+            "Uncover the hidden gems of modern cinema in our latest blog post.  Discover the must-watch films that are capturing hearts and minds across the globe. Don't miss out on the excitement of the silver screen!"
+          }
+        />
+      </motion.div>
       {/* // recent blogs */}
-      <div className="grid grid-cols-1 gap-6  main_">
+      <motion.div
+        initial={{ x: +1000 }}
+        animate={{ x: 0 }}
+        transition={{ duration: "1", delay: "0.7" }}
+        className="grid grid-cols-1 gap-6  main_"
+      >
         {movies?.map((movie) => (
           <Movie key={movie.title} movie={movie} />
         ))}
-      </div>
+      </motion.div>
       {/* cinema hall section  */}
       <CinemaHall />
       {/* Spot light section  */}
