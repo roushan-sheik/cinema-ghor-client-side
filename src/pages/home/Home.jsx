@@ -1,5 +1,6 @@
 import { Spinner } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { motion } from "framer-motion";
 import React from "react";
 import CinemaHall from "../../cinemaHall/CinemaHall";
@@ -18,9 +19,11 @@ const Home = () => {
   } = useQuery({
     queryKey: ["movies"],
     queryFn: () =>
-      fetch("https://blog-api-a11.vercel.app/blogposts").then((res) =>
-        res.json()
-      ),
+      axios
+        .get("https://blog-api-a11.vercel.app/blogposts", {
+          withCredentials: true,
+        })
+        .then((res) => res.data),
   });
 
   if (status === "pending") {

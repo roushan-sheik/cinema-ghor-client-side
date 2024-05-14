@@ -13,7 +13,7 @@ const Hall = ({ hall }) => {
       className="border-2 p-4 rounded-md"
     >
       <h2 className="font-semibold text-lg">{name}</h2>
-      <div className="flex gap-1 text_third items-center">
+      <div className="flex gap-1 mb-3 text_third items-center">
         <CiLocationOn />
         <p className="">{location}</p>
       </div>

@@ -1,4 +1,5 @@
 import { Button } from "@material-tailwind/react";
+import axios from "axios";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -34,12 +35,22 @@ const Login = () => {
     // login user
     loginUser(user.email, user.password)
       .then((result) => {
-        toast.success("Successfully logged in", {
-          position: "top-center",
-        });
-        setTimeout(() => {
-          navigate(location?.state || "/");
-        }, 3000);
+        const userObj = { user: user.email };
+        axios
+          .post("https://blog-api-a11.vercel.app/jwt", userObj, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res);
+            if (res.data.success) {
+              toast.success("Successfully logged in", {
+                position: "top-center",
+              });
+              setTimeout(() => {
+                navigate(location?.state || "/");
+              }, 3000);
+            }
+          });
       })
       .catch((error) => {
         toast.error(error.message, {

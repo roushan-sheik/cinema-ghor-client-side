@@ -28,7 +28,7 @@ const UpdateProfile = () => {
         });
         setTimeout(() => {
           navigate("/profile");
-        }, 2000);
+        }, 3000);
       })
       .catch((error) => {
         toast.error(error.message, {

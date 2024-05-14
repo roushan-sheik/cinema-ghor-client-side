@@ -1,10 +1,11 @@
+import { Button } from "@material-tailwind/react";
+import axios from "axios";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Btn from "../../components/button/Btn";
 import Inp from "../../components/input/Inp";
 import useUserContext from "../../hooks/useUserContext";
 import auth from "../../services/firebase";
@@ -55,17 +56,29 @@ const Register = () => {
       });
       return;
     }
-    const route = location?.state || "/";
+
+    // const route = "/login";
     createUserWithEmailAndPassword(auth, user.email, user.password)
       .then((result) => {
         updateUserProfile(user.name, user.photoUrl)
-          .then((result) => {
-            toast.success("Successfully register", {
-              position: "top-center",
-            });
-            setTimeout(() => {
-              navigate(route);
-            }, 4000);
+          .then(() => {
+            // jwt tokent request
+            const userObj = { user: user.email };
+            axios
+              .post("https://blog-api-a11.vercel.app/jwt", userObj, {
+                withCredentials: true,
+              })
+              .then((res) => {
+                console.log(res);
+                if (res.data.success) {
+                  toast.success("Successfully logged in", {
+                    position: "top-center",
+                  });
+                  setTimeout(() => {
+                    navigate(location?.state || "/");
+                  }, 3000);
+                }
+              });
           })
           .catch();
       })
@@ -81,7 +94,7 @@ const Register = () => {
   return (
     <div className="flex flex-col justify-center items-center">
       <Helmet>
-        <title>AffluenceAvenue | register</title>
+        <title>CinemaGhor | register</title>
       </Helmet>
       <h2 className=" text_pri text-4xl my-4 font-bold text-center">
         Register
@@ -131,7 +144,7 @@ const Register = () => {
         {/* error message */}
         <span className="text-red-500">{error}</span>
         {/* submit button  */}
-        <Btn type={"submit"}> Register</Btn>
+        <Button type={"submit"}> Register</Button>
         <p className=" text-base text_sec text-center ">
           Already have an Account?{" "}
           <Link to="/login">
