@@ -55,6 +55,7 @@ const Home = () => {
       </motion.div>
       {/* // recent blogs */}
       <motion.div
+        id="recent_blog"
         initial={{ x: +1000 }}
         animate={{ x: 0 }}
         transition={{ duration: "1", delay: "0.7" }}

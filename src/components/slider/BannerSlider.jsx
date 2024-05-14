@@ -47,7 +47,9 @@ export default function BannerSlider() {
                 in shaping cinematic narratives.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Button color="blue">Explore Now</Button>
+                <a href="#recent_blog">
+                  <Button color="blue">Explore Now</Button>
+                </a>
               </div>
             </div>
           </div>
@@ -64,7 +66,9 @@ export default function BannerSlider() {
                 remains a beloved masterpiece.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Button color="blue">Explore Now</Button>
+                <a href="#recent_blog">
+                  <Button color="blue">Explore Now</Button>
+                </a>
               </div>
             </div>
           </div>
@@ -81,7 +85,9 @@ export default function BannerSlider() {
                 magic of filmmaking.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Button color="blue">Explore Now</Button>
+                <a href="#recent_blog">
+                  <Button color="blue">Explore Now</Button>
+                </a>
               </div>
             </div>
           </div>
@@ -98,7 +104,9 @@ export default function BannerSlider() {
                 impact on popular culture.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Button color="blue">Explore Now</Button>
+                <a href="#recent_blog">
+                  <Button color="blue">Explore Now</Button>
+                </a>
               </div>
             </div>
           </div>
@@ -115,7 +123,9 @@ export default function BannerSlider() {
                 ability to evoke emotion.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Button color="blue">Explore Now</Button>
+                <a href="#recent_blog">
+                  <Button color="blue">Explore Now</Button>
+                </a>
               </div>
             </div>
           </div>
@@ -132,7 +142,9 @@ export default function BannerSlider() {
                 shaping cinematic narratives.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Button color="blue">Explore Now</Button>
+                <a href="#recent_blog">
+                  <Button color="blue">Explore Now</Button>
+                </a>
               </div>
             </div>
           </div>
@@ -149,7 +161,9 @@ export default function BannerSlider() {
                 movie industry.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Button color="blue">Explore Now</Button>
+                <a href="#recent_blog">
+                  <Button color="blue">Explore Now</Button>
+                </a>
               </div>
             </div>
           </div>
@@ -166,7 +180,9 @@ export default function BannerSlider() {
                 the silver screen.
               </p>
               <div className="inline-flex justify-center flex-col mt-8">
-                <Button color="blue">Explore Now</Button>
+                <a href="#recent_blog">
+                  <Button color="blue">Explore Now</Button>
+                </a>
               </div>
             </div>
           </div>
