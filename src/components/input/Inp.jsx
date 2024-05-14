@@ -17,7 +17,7 @@ const Inp = ({
     <div className={`${boxStyle} flex flex-col gap-2`}>
       <label className={`${labelStyle} font-semibold`} htmlFor={name}>
         {" "}
-        {label}:
+        {label}
       </label>
       <input
         onChange={onChange}
