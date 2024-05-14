@@ -6,8 +6,7 @@ import Movie from "../../components/movie/Movie";
 const AllBlogs = () => {
   const [categories, setCategories] = React.useState("");
   const [searchInput, setSearchInput] = React.useState("");
-  // my  server api
-  // https://blog-api-a11.vercel.app/
+ 
   const {
     status,
     error,

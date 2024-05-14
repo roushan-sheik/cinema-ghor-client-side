@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       {
         path: "/featured-blogs",
         element: <FeaturedBlogs />,
-        // loader: allBlogsLoader,
+        loader: allBlogsLoader,
       },
       {
         path: "/update-blog",
