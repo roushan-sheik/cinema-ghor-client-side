@@ -6,7 +6,7 @@ import Movie from "../../components/movie/Movie";
 const AllBlogs = () => {
   const [categories, setCategories] = React.useState("");
   const [searchInput, setSearchInput] = React.useState("");
-  const [movies, setMovies] = React.useState(null);
+  const [filterMovies, setFilterMovies] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
   const blogsUrl = "https://blog-api-a11.vercel.app/blogposts";
@@ -15,7 +15,7 @@ const AllBlogs = () => {
     async function fetchComments() {
       setLoading(true);
       const res = await axios.get(blogsUrl);
-      setMovies(res.data);
+      setFilterMovies(res.data);
     }
     fetchComments();
     setLoading(false);
@@ -28,12 +28,26 @@ const AllBlogs = () => {
   function handleCategoryChange(value) {
     setCategories(value);
   }
+  // filter by search input
+
+  const filterByInput = `https://blog-api-a11.vercel.app/searchInput/${searchInput}`;
   // click handler
-  function handleInputSearchClick() {
-    console.log("input search clicked", searchInput);
+  async function handleInputSearchClick() {
+    setFilterMovies([]);
+    setLoading(true);
+    const res = await axios.get(filterByInput);
+    setFilterMovies(await res.data);
+    setLoading(false);
   }
-  function handleSelectSearch() {
-    console.log("select search selected", categories);
+
+  // filter by category
+  const filterByCategory = `https://blog-api-a11.vercel.app/category/${categories}`;
+  async function handleSelectSearch() {
+    setFilterMovies([]);
+    setLoading(true);
+    const res = await axios.get(filterByCategory);
+    setFilterMovies(await res.data);
+    setLoading(false);
   }
 
   if (loading) {
@@ -55,6 +69,7 @@ const AllBlogs = () => {
         <div className="flex w-full lg:w-[80%] border-2 mt-8 xl:w-[80%] 2xl:w-[60%] justify-between bg-white py-[.3125rem] pl-6 pr-[.3125rem] rounded-[2.1875rem]">
           <input
             id="search_input"
+            value={searchInput}
             placeholder="Search blog"
             onChange={handleSearchChange}
             className=" py-[.5rem]  rounded-[2.1875rem]  lg:py-[.625rem] outline-none w-[65%]    "
@@ -99,7 +114,7 @@ const AllBlogs = () => {
       </div>
       {/* // recent blogs */}
       <div className="grid grid-cols-1 gap-6  main_">
-        {movies?.map((movie) => (
+        {filterMovies?.map((movie) => (
           <Movie key={movie.title} movie={movie} />
         ))}
       </div>
