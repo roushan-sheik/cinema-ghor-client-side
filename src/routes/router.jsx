@@ -65,11 +65,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/update-blog",
-        element: <UpdateBlog />,
+        element: (
+          <PrivateRoute>
+            <UpdateBlog />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/blog-details/:id",
-        element: <BlogDetails />,
+        element: (
+          <PrivateRoute>
+            <BlogDetails />,
+          </PrivateRoute>
+        ),
         loader: homeLoader,
       },
       {

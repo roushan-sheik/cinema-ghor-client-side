@@ -30,9 +30,9 @@ const Movie = ({ movie }) => {
   const currentDate = new Date().toLocaleDateString();
   const commentObj = {
     blog_id: _id,
-    user_name: user.displayName,
-    user_email: user.email,
-    profile_image: user.photoURL,
+    user_name: user?.displayName || "User",
+    user_email: user?.email,
+    profile_image: user?.photoURL,
     body: commentText,
     createdAt: currentDate,
   };
@@ -50,7 +50,7 @@ const Movie = ({ movie }) => {
     setCommentText("");
   }
   let commentBox;
-  if (user_email == user.email) {
+  if (user_email == user?.email) {
     commentBox = (
       <p className="p-2 border-2 bg-gray-200 mt-6 text-red-500">
         {"Can not comment on own blog"}
@@ -80,9 +80,9 @@ const Movie = ({ movie }) => {
   const WishlistUrl = "https://blog-api-a11.vercel.app/wishlist";
   const wishListObj = {
     blog_id: _id,
-    user_name: user.displayName,
-    user_email: user.email,
-    profile_image: user.photoURL,
+    user_name: user?.displayName,
+    user_email: user?.email,
+    profile_image: user?.photoURL,
     createdAt: currentDate,
     title,
     image_url,
@@ -151,7 +151,7 @@ const Movie = ({ movie }) => {
             </button>
           </div>
           {/* comment input  box  */}
-          <div>{commentBox}</div>
+          <div>{user ? commentBox : "Login for comment"}</div>
         </div>
       </div>
     </div>
