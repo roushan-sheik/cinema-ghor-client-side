@@ -2,7 +2,7 @@ import { Button, Input } from "@material-tailwind/react";
 import axios from "axios";
 import React from "react";
 import { IoIosHeart, IoMdSend } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import useUserContext from "../../hooks/useUserContext";
 import BlogUserProfile from "../blogUserProfile/BlogUserProfile";
@@ -10,7 +10,7 @@ import BlogUserProfile from "../blogUserProfile/BlogUserProfile";
 const Movie = ({ movie }) => {
   const { user } = useUserContext();
   const [commentText, setCommentText] = React.useState("");
-  const [showComment, setShowComment] = React.useState(false);
+  const navigate = useNavigate();
   const {
     _id,
     title,
@@ -91,6 +91,10 @@ const Movie = ({ movie }) => {
     long_description,
   };
   async function handleWishlistClick() {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
     try {
       await axios.post(WishlistUrl, wishListObj);
       toast.success("Added to Wishlist", {
@@ -151,7 +155,15 @@ const Movie = ({ movie }) => {
             </button>
           </div>
           {/* comment input  box  */}
-          <div>{user ? commentBox : "Login for comment"}</div>
+          <div>
+            {user ? (
+              commentBox
+            ) : (
+              <p className="p-2 bg-gray-200 rounded-md mt-4">
+                Login for do Comment
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>
