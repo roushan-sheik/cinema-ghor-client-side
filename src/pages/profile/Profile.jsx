@@ -10,7 +10,7 @@ const Profile = () => {
       </Helmet>
       <div className="flex flex-col items-center my-16">
         <img
-          className="rounded-full h-[200px]"
+          className="rounded-full h-[200px] w-[200px] ring-8 ring-blue-500"
           src={user?.photoURL || "https://i.ibb.co/6JyZF0K/user.png"}
           alt="pic"
         />
