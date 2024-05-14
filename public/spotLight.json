@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Christopher Nolan",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4-W3E6X4afLZb1xg-I4WmbbzgzqDAMXBLy7gZZ3E7cQ&s",
+    "bio": "Christopher Nolan is a British-American film director and screenwriter known for his innovative storytelling and visually stunning films. He gained widespread acclaim for his work on movies such as 'Inception,' 'The Dark Knight Trilogy,' and 'Interstellar.' Nolan's films often explore complex themes of time, memory, and identity, earning him a reputation as one of the most visionary directors of his generation."
+  },
+  {
+    "id": 2,
+    "name": "Quentin Tarantino",
+    "image": "https://ew.com/thmb/1QyqVH-SvgCVbeqe6HxuRZuaGSY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/quentin-tarantino-2000-5b8c940736184451a0a4675a753ebd8c.jpg",
+    "bio": "Quentin Tarantino is an American filmmaker known for his distinctive style, eclectic soundtracks, and nonlinear storytelling. He rose to prominence with cult classics like 'Pulp Fiction,' 'Reservoir Dogs,' and 'Kill Bill.' Tarantino's films often blend elements of crime, violence, and dark humor, captivating audiences with their bold narratives and memorable characters."
+  },
+  {
+    "id": 3,
+    "name": "Martin Scorsese",
+    "image": "https://nationaltoday.com/wp-content/uploads/2022/10/57-Martin-Scorsese-1200x834.jpg",
+    "bio": "Martin Scorsese is an American director, producer, and screenwriter widely regarded as one of the greatest filmmakers in cinematic history. Known for his gritty depictions of urban life and complex characters, Scorsese has helmed classics such as 'Taxi Driver,' 'Goodfellas,' and 'The Departed.' His films explore themes of crime, redemption, and the human condition, earning him critical acclaim and numerous awards."
+  },
+  {
+    "id": 4,
+    "name": "Steven Spielberg",
+    "image": "https://ew.com/thmb/MYOHJdsxqQDEzAqDaXVEqtCUYC0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Steven-Spielberg-012323-35ed31ee3049484e8277a329f12011ba.jpg",
+    "bio": "Steven Spielberg is an American filmmaker and one of the most influential directors in the history of cinema. Renowned for his blockbuster hits and heartfelt storytelling, Spielberg has created iconic films such as 'Jaws,' 'E.T. the Extra-Terrestrial,' and 'Schindler's List.' His versatile filmmaking style has earned him widespread acclaim, making him a household name around the world."
+  }
+]

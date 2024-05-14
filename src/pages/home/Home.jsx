@@ -2,6 +2,7 @@ import { Spinner } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import CinemaHall from "../../cinemaHall/CinemaHall";
+import DirectorSpotlight from "../../components/directorSpogthLight/DirectorSpotlight";
 import Movie from "../../components/movie/Movie";
 import NewsLetter from "../../components/newsLetter/NewsLetter";
 import BannerSlider from "../../components/slider/BannerSlider";
@@ -54,6 +55,8 @@ const Home = () => {
       </div>
       {/* cinema hall section  */}
       <CinemaHall />
+      {/* Spot light section  */}
+      <DirectorSpotlight />
       {/* newsletter section */}
       <NewsLetter />
     </div>
