@@ -14,7 +14,7 @@ npm install
 npm run dev
 ```
 
-### Deployed Netlify
+### Deployed Firebase
 
 #### Live link: https://blog-management-app-bc38c.web.app/
 
