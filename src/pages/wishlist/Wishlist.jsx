@@ -11,11 +11,13 @@ const Wishlist = () => {
   function wishListDelete(data) {}
   // Wishlist data fetching
   const wishlistUrl = `https://blog-api-a11.vercel.app/wishlist/${user.email}`;
+  // const wishlistUrl = `http://localhost:8000/wishlist/${user.email}`;
   React.useEffect(() => {
     async function fetchComments() {
       setLoading(true);
-      const res = await axios.get(wishlistUrl);
+      const res = await axios.get(wishlistUrl, { withCredentials: true });
       setWishlistData(res.data);
+      console.log(res);
     }
     fetchComments();
     setLoading(false);

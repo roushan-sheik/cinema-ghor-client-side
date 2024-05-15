@@ -19,6 +19,7 @@ const Home = () => {
   } = useQuery({
     queryKey: ["movies"],
     queryFn: () =>
+      // .get("http://localhost:8000/blogposts", {
       axios
         .get("https://blog-api-a11.vercel.app/blogposts", {
           withCredentials: true,
