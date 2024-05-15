@@ -14,8 +14,10 @@ function LogInButton({ userEmail }) {
       .then((result) => {
         // create a json web token
         const userObj = { user: result.user.email };
+        // https://blog-api-a11.vercel.app/
+        // http://localhost:8000/jwt
         axios
-          .post("https://blog-api-a11.vercel.app/jwt", userObj, {
+          .post("http://localhost:8000/jwt", userObj, {
             withCredentials: true,
           })
           .then((res) => {

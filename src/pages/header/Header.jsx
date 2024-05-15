@@ -11,6 +11,9 @@ import useUserContext from "../../hooks/useUserContext";
 function Header() {
   const { user } = useUserContext();
   const [openBar, setOpenBar] = React.useState(false);
+  function handleLogout() {
+    console.log("Logout done");
+  }
   return (
     <div>
       <header>
@@ -42,7 +45,12 @@ function Header() {
           <div>
             <div className=" flex gap-2 md:gap-6 items-center">
               {user ? (
-                <NavProfile />
+                <div className="flex gap-4">
+                  <NavProfile />
+                  <Button onClick={handleLogout} size="sm" color="blue">
+                    LogOut
+                  </Button>
+                </div>
               ) : (
                 <Link className="bg_brand" to={"/login"}>
                   <Button color="blue">Login</Button>
