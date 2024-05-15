@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -33,9 +34,12 @@ const AuthProvider = ({ children }) => {
   }
 
   // logout user
-  function logoutUser() {
+  async function logoutUser() {
     setLoading(true);
-    return signOut(auth);
+    await signOut(auth);
+    await axios.get("https://blog-api-a11.vercel.app/jwt/logout", {
+      withCredentials: true,
+    });
   }
   // update profile
   function updateUserProfile(name, photo) {

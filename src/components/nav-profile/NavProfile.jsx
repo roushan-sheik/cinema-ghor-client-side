@@ -8,12 +8,7 @@ const NavProfile = () => {
   const [showDetails, setShowDetails] = React.useState(false);
   function handleLogoutClick() {
     logoutUser()
-      .then(() => {
-        console.log("successfully LogOut");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+ 
   }
   return (
     <div className="relative ">

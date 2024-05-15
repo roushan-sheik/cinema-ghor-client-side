@@ -9,10 +9,10 @@ import Navlist from "../../components/navList/Navlist";
 import useUserContext from "../../hooks/useUserContext";
 
 function Header() {
-  const { user } = useUserContext();
+  const { user, logoutUser } = useUserContext();
   const [openBar, setOpenBar] = React.useState(false);
   function handleLogout() {
-    console.log("Logout done");
+    logoutUser();
   }
   return (
     <div>
@@ -47,7 +47,12 @@ function Header() {
               {user ? (
                 <div className="flex gap-4">
                   <NavProfile />
-                  <Button onClick={handleLogout} size="sm" color="blue">
+                  <Button
+                    className="bg-blue-gray-200 capitalize text-base text-black"
+                    onClick={handleLogout}
+                    size="sm"
+                    color="blue"
+                  >
                     LogOut
                   </Button>
                 </div>

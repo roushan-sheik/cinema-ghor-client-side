@@ -64,6 +64,30 @@ const MobileNav = () => {
       >
         Wishlist
       </NavLink>
+      <NavLink
+        to={"/profile"}
+        className={({ isActive, isPending }) =>
+          isActive
+            ? "font-semibold text-[#ff6b6b] border-2 border-[#ff6b6b] rounded-lg lg:px-4 px-2 lg:py-3 py-[6px]"
+            : isPending
+            ? "pending"
+            : "flex items-center md:text-lg"
+        }
+      >
+        Profile
+      </NavLink>
+      <NavLink
+        to={"/update-profile"}
+        className={({ isActive, isPending }) =>
+          isActive
+            ? "font-semibold text-[#ff6b6b] border-2 border-[#ff6b6b] rounded-lg lg:px-4 px-2 lg:py-3 py-[6px]"
+            : isPending
+            ? "pending"
+            : "flex items-center md:text-lg"
+        }
+      >
+        Update Profile
+      </NavLink>
     </div>
   );
 };
