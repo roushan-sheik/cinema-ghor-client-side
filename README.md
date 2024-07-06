@@ -30,6 +30,9 @@ npm run dev
 
 - React
 - Tailwind
+- Express Js
+- JWT Json WeB Token
+- MongoDB
 - Material Tailwind (component library)
 - React router dom
 - Framer Motion

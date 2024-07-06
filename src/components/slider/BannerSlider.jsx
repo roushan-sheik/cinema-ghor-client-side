@@ -60,7 +60,6 @@ export default function BannerSlider() {
               <h2 className="md:text-6xl text-3xl md:font-bold font-semibold   text-white text-center">
                 {"The Art of Cinematography: Exploring Visual Storytelling"}
               </h2>
-
               <p className="text-base text-white mt-6 md:w-[60%] w-full mx-auto">
                 Revisit the timeless classic Casablanca and discover why it
                 remains a beloved masterpiece.
