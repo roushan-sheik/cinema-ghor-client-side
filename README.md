@@ -1,6 +1,8 @@
-# React Project
+# MERN Stack Project
 
 ## Book House App
+
+<img src="./cinema ghor.png" />
 
 ### installation
 
@@ -21,6 +23,8 @@ npm run dev
 #### Client repo: https://github.com/Porgramming-Hero-web-course/b9a11-client-side-roushan-sheik
 
 #### Server repo: https://github.com/Porgramming-Hero-web-course/b9a11-server-side-roushan-sheik
+
+<p>Hi there I am Roushan Sheik. I have developed this CinemaGhor blog management app. Most important features are You can register an account and you can login by your google account . after login you can do blog post and you can read all the blogs. After that you can comment on a blog and you can add a blog to your wishlist those are the features of this application.</p>
 
 ### Used tools & Technologies
 
